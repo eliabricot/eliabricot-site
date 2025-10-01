@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eliabricot</title>
+
+  <style>
+    /* ===== POLICE Genshin ===== */
+    @font-face{
+      font-family: "Genshin";
+      src: url("assets/genshin.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root{
+      --bg1:#456d6d; --bg2:#2e4747;
+      --text:#f5f7fb; --muted:#dde5e6;
+      --radius:12px; --shadow:0 8px 28px rgba(0,0,0,.35);
+      --card: rgba(20,22,27,.82);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:"Genshin", ui-sans-serif, system-ui;
+      font-size:15px; line-height:1.6; color:var(--text);
+      background: linear-gradient(180deg,var(--bg1) 0%, #3f6666 40%, #365b5b 70%, var(--bg2) 100%);
+    }
+
+    .wrap{max-width:780px;margin:0 auto;padding:20px}
+
+    /* ===== HEADER avec fondu intégré, PAS d'overlay séparé ===== */
+    header{
+      min-height:92vh; display:flex; align-items:center; justify-content:center; text-align:center;
+      background-image:
+        linear-gradient(180deg, rgba(69,109,109,0.00) 60%, rgba(69,109,109,0.35) 85%, rgba(46,71,71,1) 100%),
+        url("assets/cover.jpg");
+      background-size: 100% 100%, cover;
+      background-position: center, center;
+      background-repeat: no-repeat, no-repeat;
+    }
+    .hero h1{font-size:38px;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,.35)}
+    .hero p{color:var(--muted);text-shadow:0 2px 6px rgba(0,0,0,.25)}
+
+    section{margin:40px 0}
+    h2{font-size:22px;margin-bottom:12px}
+
+    .card{
+      background:var(--card);
+      backdrop-filter: blur(4px);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+
+    /* ===== Liens ===== */
+    .links{display:grid;gap:12px}
+    .link{
+      display:flex;align-items:center;gap:12px;
+      padding:12px 16px;border-radius:10px;
+      text-decoration:none;color:var(--text);
+      background:rgba(16,19,26,.72);
+      border:1px solid #ffffff1a; transition:.2s;
+    }
+    .link:hover{background:#1a2b2b;border-color:#ffffff30}
+    .link img.icon{width:22px;height:22px;object-fit:contain;display:inline-block}
+
+    /* ===== UID Genshin ===== */
+    .uid-row{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;margin:8px 0;padding:8px 12px;
+      border-radius:10px;background:rgba(16,19,26,.72);
+    }
+    .uid-label{display:flex;align-items:center;gap:8px}
+    .uid-copy{
+      margin-left:auto;padding:6px 12px;font-size:13px;font-family:inherit;
+      color:#fff;background:#2e2e3a;border:none;border-radius:8px;cursor:pointer;
+      transition:transform .15s ease, background .2s ease;box-shadow:0 2px 6px rgba(0,0,0,.3)
+    }
+    .uid-copy:hover{background:#456d6d;transform:scale(1.04)}
+
+    /* ===== Toast copier ===== */
+    .toast{
+      position:fixed;bottom:20px;right:20px;z-index:50;
+      background:#2e2e3a;color:#fff;padding:10px 14px;border-radius:8px;
+      opacity:0;transform:translateY(10px);transition:opacity .25s, transform .25s;
+      pointer-events:none;
+    }
+    .toast.show{opacity:1;transform:translateY(0)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <h1>eliabricot</h1>
+      <p>she/they · 夏と冬の間で揺れる心</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Bio -->
+    <section class="card">
+      <h2>Bio</h2>
+      <p>
+        Hey, moi c’est Elia. J'ai 19 ans et je suis dans un univers doux, mystiques et nocturnes ✧
+        Je stream, je crée, et je gère des projets commu. Bienvenue dans mon petit coin d’internet.
+      </p>
+      <br>
+      <p>🎮 Joueur Mario Kart World sous le tag Rito.</p>
+      <p>🌀 Lead & owner de la communauté <i>Sonic Racing Crossworld France</i>.</p>
+    </section>
+
+    <!-- Genshin -->
+    <section class="card">
+      <h2>Genshin Impact</h2>
+      <div class="uid-row">
+        <span class="uid-label">🌸 UID Europe : 714540470</span>
+        <button class="uid-copy" onclick="copyUID('714540470')">copier</button>
+      </div>
+      <div class="uid-row">
+        <span class="uid-label">🌸 UID Asia : 850533478</span>
+        <button class="uid-copy" onclick="copyUID('850533478')">copier</button>
+      </div>
+    </section>
+
+    <!-- Liens -->
+    <section class="card">
+      <h2>Liens</h2>
+      <div class="links">
+        <a class="link" href="https://discord.gg/9vVuYJhGXg" target="_blank">
+          <img class="icon" src="assets/discord.png" alt="Discord"> Discord
+        </a>
+        <a class="link" href="https://www.twitch.tv/eliabricot_" target="_blank">
+          <img class="icon" src="assets/twitch.png" alt="Twitch"> Twitch
+        </a>
+        <a class="link" href="https://www.youtube.com/@Eliabricott" target="_blank">
+          <img class="icon" src="assets/youtube.png" alt="YouTube"> YouTube
+        </a>
+        <a class="link" href="https://x.com/thynaria_fae" target="_blank">
+          <img class="icon" src="assets/twitter.png" alt="Twitter"> Twitter
+        </a>
+        <a class="link" href="https://discord.gg/bkaT4KezdR" target="_blank">
+          <img class="icon" src="assets/sonic.png" alt="Sonic"> Sonic Crossworld France
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast">UID copié !</div>
+
+  <script>
+    function copyUID(uid){
+      navigator.clipboard.writeText(uid).then(()=>{
+        const t=document.getElementById('toast');
+        t.textContent='UID copié : '+uid;
+        t.classList.add('show');
+        setTimeout(()=>t.classList.remove('show'),1600);
+      });
+    }
+  </script>
+</body>
+</html>
