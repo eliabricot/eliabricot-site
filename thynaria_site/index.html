@@ -8,8 +8,11 @@
   <style>
     /* ===== POLICE Genshin ===== */
     @font-face{
-      font-family: "philo";
-      src: url("assets/Philo.ttf") format("truetype");
+      font-family: "Philo";
+      src:
+        url("assets/Philo.woff2?v=1") format("woff2"),
+        url("assets/Philo.woff?v=1") format("woff"),
+        url("assets/Philo.ttf?v=1") format("truetype");
       font-weight: 400;
       font-style: normal;
       font-display: swap;
@@ -23,26 +26,39 @@
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
-    body{
+    html, body{
+      height:100%;
+      width:100%;
       font-family:"Philo", ui-sans-serif, system-ui;
       font-size:15px; line-height:1.6; color:var(--text);
-      background: linear-gradient(180deg, #1d2e35 0%, #2f4f55 60%, #4f7c82 100%);
+      background:
+        linear-gradient(180deg, rgba(20,30,33,0.6) 0%, rgba(20,30,33,0.8) 100%),
+        url("assets/cover.jpg") no-repeat center center fixed;
+      background-size: cover;
+      background-attachment: fixed;
+      overflow-x:hidden;
     }
 
     .wrap{max-width:780px;margin:0 auto;padding:20px}
 
-    /* ===== HEADER avec fondu intégré, PAS d'overlay séparé ===== */
+    /* ===== HEADER ===== */
     header{
-      min-height:92vh; display:flex; align-items:center; justify-content:center; text-align:center;
-      background-image:
-        linear-gradient(180deg, rgba(69,109,109,0.00) 60%, rgba(69,109,109,0.35) 85%, rgba(46,71,71,1) 100%),
-        url("assets/cover.jpg");
-      background-size: 100% 100%, cover;
-      background-position: center, center;
-      background-repeat: no-repeat, no-repeat;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
     }
-    .hero h1{font-size:38px;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,.35)}
-    .hero p{color:var(--muted);text-shadow:0 2px 6px rgba(0,0,0,.25)}
+    .hero h1{
+      font-size:42px;
+      margin-bottom:8px;
+      text-shadow:0 2px 8px rgba(0,0,0,.45);
+    }
+    .hero p{
+      color:var(--muted);
+      text-shadow:0 2px 6px rgba(0,0,0,.25);
+      font-size:17px;
+    }
 
     section{margin:40px 0}
     h2{font-size:22px;margin-bottom:12px}
@@ -107,6 +123,13 @@
     .np .artist{opacity:.85;font-size:.95rem}
     .np a{color:#b6e0ff;text-decoration:none}
     .np a:hover{text-decoration:underline}
+
+    /* ===== Responsive ===== */
+    @media (max-width:600px){
+      .hero h1{font-size:30px}
+      .hero p{font-size:14px}
+      .wrap{padding:12px}
+    }
   </style>
 </head>
 <body>
@@ -125,8 +148,8 @@
         Hey, moi c’est Elia. J'ai 19 ans et je suis dans un univers doux et nocturne ✧
         Je stream, je crée, et j'entreprends des projets avec la communauté. Bienvenue dans mon petit coin d’internet.
         Je joue à énormément de jeux différents comme : Omori, Hollow Knight, Pokémon, Persona et j'en passe !
-        Je suis étudiante en LLCER Japonais et aussi violoniste 🎻 Ma musique préférée est Insomnia de Eve 
-	Je débute le cosplay aussi ! ✧
+        Je suis étudiante en LLCER Japonais et aussi violoniste 🎻 Ma musique préférée est Insomnia de Eve. 
+        Je débute le cosplay aussi ! ✧
       </p>
       <br>
       <p>🎮 Joueur Mario Kart World sous le tag ??.</p>
@@ -165,7 +188,7 @@
         <a class="link" href="https://www.youtube.com/@Eliabricott" target="_blank">
           <img class="icon" src="assets/youtube.png" alt="YouTube"> YouTube
         </a>
-	<a class="link" href="https://www.instagram.com/sunae.exe?igsh=dGw5ejN6bHVwazBv&utm_source=qr" target="_blank">
+        <a class="link" href="https://www.instagram.com/sunae.exe" target="_blank">
           <img class="icon" src="assets/insta.png" alt="Instagram"> Instagram
         </a>
         <a class="link" href="https://x.com/thynaria_fae" target="_blank">
